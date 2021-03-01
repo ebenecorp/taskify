@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Taskify</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+@extends('layouts.app')
 
-</head>
-<body>
+
+@section('title')
+Task: {{$todo->name}}   
+@endsection
+
+
+@section('content')
     <div class="container">
         <h1 class="text-center m-2"> Task Details</h1>
             <div class="row justify-content-center">
@@ -24,6 +22,4 @@
                 </div>
         </div>
  </div>
-    
-</body>
-</html>
+@endsection
