@@ -25,6 +25,11 @@ class TodoController extends Controller
 
     public function store(Request $request){
 
+        $this->validate($request, [
+            'name'=>'required',
+            'description'=> 'required'
+        ] );
+
         $data = $request->all();
 
         $todo = Todo::create($data);
@@ -34,5 +39,38 @@ class TodoController extends Controller
         return redirect('/todos');
 
     }
+
+    public function edit($id){
+        $todo = Todo::find($id);
+
+        return view('todos.edit')->with('todo', $todo);
+
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request, [
+            'name'=>'required',
+            'description'=> 'required'
+        ] );
+
+        $data = $request->all();
+
+        $todo = Todo::find($id);
+        $todo->name = $request->name;
+        $todo->description = $request->description;
+        $todo->update();
+
+        return redirect('/todos');
+
+    }
+
+    public function destroy($id){
+        // dd($id);
+        Todo::destroy($id);
+
+        return redirect('/todos');
+    }
+
+
 
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    taskify: create a tasks
+    taskify: edit {{ $todo->name }}
 @endsection
 
 
@@ -15,12 +15,13 @@
         <div class="col-md-8">
             <div class="card card-default">
                 <div class="card-header">
-                    Create a new task
+                    Update a new task
                 </div>
 
                 <div class="card-body">
-                        <form action="/store-todo" method="POST" >
+                        <form action="/{{ $todo->id }}/update-todo" method="POST" >
                             @csrf
+                            {{-- <input type="hidden" value="{{ $todo->id }}"> --}}
                             @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
@@ -35,17 +36,15 @@
 
                                 @endif
                             <div class="form-group m-2">
-                                <input type="text" placeholder="Name" name="name" class="form-control">
+                                <input type="text" placeholder="Name" name="name" value="{{ $todo->name }}" class="form-control">
 
                             </div>
                             <div class="form-group m-2">
-                                <textarea name="description" placeholder="Description"  cols="5" rows="6" class="form-control">
-
-                                </textarea>
+                                <textarea name="description" placeholder="Description"  cols="5" rows="6" class="form-control">{{ $todo->description }}</textarea>
 
                             </div>
                             <div class="form-group text-center m-2">
-                                <button type="submit" class="btn btn-success">Create</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </form>
                 </div>
