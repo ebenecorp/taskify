@@ -14,9 +14,9 @@ class TodoController extends Controller
         return view('todos.index')->with('todos' , Todo::all());
     }
 
-    public function show($id){
+    public function show(Todo $todo){
 
-        return view('todos.show')->with('todo', Todo::find($id));
+        return view('todos.show')->with('todo', $todo);
     }
 
     public function create(){
@@ -36,14 +36,14 @@ class TodoController extends Controller
 
         $todo->save();
 
+        session()->flash('success', 'Task was successfully added');
+
         return redirect('/todos');
 
     }
 
-    public function edit($id){
-        $todo = Todo::find($id);
-
-        return view('todos.edit')->with('todo', $todo);
+    public function edit(Todo $todo){
+         return view('todos.edit')->with('todo', $todo);
 
     }
 
@@ -60,13 +60,27 @@ class TodoController extends Controller
         $todo->description = $request->description;
         $todo->update();
 
+        session()->flash('success', 'Task was successfully updated');
+
         return redirect('/todos');
 
     }
 
-    public function destroy($id){
+    public function destroy(Todo $todo){
         // dd($id);
-        Todo::destroy($id);
+        $todo->delete();
+        
+        session()->flash('success', 'Task was successfully deleted');
+
+        return redirect('/todos');
+    }
+
+    public function complete(Todo $todo){
+        // dd($id);
+        $todo->completed = true;
+        $todo->save();
+        
+        session()->flash('success', 'Task was successfully completed');
 
         return redirect('/todos');
     }

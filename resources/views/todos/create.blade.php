@@ -39,9 +39,7 @@
 
                             </div>
                             <div class="form-group m-2">
-                                <textarea name="description" placeholder="Description"  cols="5" rows="6" class="form-control">
-
-                                </textarea>
+                                <textarea name="description" placeholder="Description"  cols="5" rows="6" class="form-control"></textarea>
 
                             </div>
                             <div class="form-group text-center m-2">
