@@ -6,6 +6,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+## Taskify 
+This is a task management application. 
+It an be used to keep track of list of pending task to be done by an individual. Once a task has been completed it can be marked completed among other basic CRUD functions.
+Taskify was built with Laravel.
+
 
 ## About Laravel
 
